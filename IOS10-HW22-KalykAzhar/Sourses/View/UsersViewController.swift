@@ -1,11 +1,11 @@
 import UIKit
 import CoreData
 
-class UsersViewController: UIViewController {
+class UsersViewController: UIViewController, UsersView {
+    
+    var presenter: UsersPresenterProtocol? 
     
     // MARK: - Elements
-    
-    let presenter = Presenter()
     
     private lazy var textField: UITextField = {
         let textField = UITextField()
@@ -40,7 +40,6 @@ class UsersViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        presenter.getAllItems()
         tableView.reloadData()
     }
     
@@ -49,7 +48,7 @@ class UsersViewController: UIViewController {
         title = "Users"
         navigationController?.navigationBar.prefersLargeTitles = true
         view.backgroundColor = .white
-        presenter.getAllItems()
+        presenter?.fetchUsers()
         setupHierarchy()
         setupLayout()
     }
@@ -87,11 +86,15 @@ class UsersViewController: UIViewController {
     // MARK:  - Actions
     
     @objc func addToTextField() {
-        guard let text = textField.text, ((textField.text?.isEmpty) != nil) else {
-            return
+        if let text = textField.text, !text.isEmpty {
+            self.presenter?.addNewUser(name: text)
+            textField.text = ""
+            tableView.reloadData()
         }
-        self.presenter.createItem(name: text)
-        textField.text = ""
+    }
+    
+    func reloadData() {
         tableView.reloadData()
     }
 }
+
