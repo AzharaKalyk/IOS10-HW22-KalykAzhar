@@ -4,14 +4,14 @@ import CoreData
 
 // MARK: - Extension UsersViewController
 
-extension UsersViewController: UITableViewDelegate, UITableViewDataSource {
+extension UsersViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return presenter?.getUsersCount() ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let model = presenter?.getUser(index: indexPath.row)
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let model = presenter?.getUser(indexPath.row)
         cell.textLabel?.text = model?.name
         cell.accessoryType = .disclosureIndicator
         return cell
@@ -19,18 +19,15 @@ extension UsersViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         guard editingStyle == .delete else { return }
-        presenter?.deleteUser(index: indexPath.row)
+        presenter?.deleteUser(indexPath.row)
         tableView.reloadData()
     }
     
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let viewController = DetailViewController()
         tableView.deselectRow(at: indexPath, animated: true)
-        
-        if let user = presenter?.getUser(index: indexPath.row) {
-            viewController.person = user
-            navigationController?.pushViewController(viewController, animated: true)
-        }
+        let user = presenter?.getUser(indexPath.row)
+        let detail = ModuleBuilder.createDetailView(model: user ?? Users())
+        self.navigationController?.pushViewController(detail, animated: true)
     }
 }
+

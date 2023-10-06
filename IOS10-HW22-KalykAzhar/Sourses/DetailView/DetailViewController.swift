@@ -2,13 +2,12 @@ import UIKit
 
 // MARK: -DetailViewController
 
-class DetailViewController: UIViewController, DetailProtocolView {
+class DetailViewController: UIViewController, DetailViewOutput {
     
     // MARK: - Elements
     
     private var isEditUser = false
-    
-    var presenter: DetailPresenterProtocol?
+    var presenter: DetailViewInput?
     
     var user: Users? {
         didSet {

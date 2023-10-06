@@ -1,7 +1,8 @@
 import Foundation
 import CoreData
 
-final class CoreData {
+final class CoreData: CoreDataProtocol {
+    var models: [Users]?
     
     static let shared = CoreData()
     
@@ -38,40 +39,70 @@ final class CoreData {
         }
     }
     
+    // MARK: -Actions
+    
     func fetchUsers() {
-        let fetchRequest: NSFetchRequest<Users> = Users.fetchRequest()
-        
         do {
-            users = try context.fetch(fetchRequest)
+            models = try context.fetch(Users.fetchRequest())
+            
         } catch {
-            print(error)
+            print("Error")
         }
     }
     
-    func addNewUser(name: String, gender: String, date: String) {
+    func addNewUser(name: String) {
         let user = Users(context: context)
         user.name = name
-        user.gender = gender
-        
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd.MM.yyyy"
-        if let date = dateFormatter.date(from: date) {
-            user.date = date
-        } else {
-            print("Error parsing date")
+        do {
+            try context.save()
+            fetchUsers()
+        } catch {
+            print("Error")
         }
-        updateUser()
     }
     
     func deleteUser(index: Int) {
-        guard let user = users?[index] else { return }
+        guard let user = models?[index] else { return }
         
         context.delete(user)
-        updateUser()
+        do {
+            try context.save()
+            fetchUsers()
+        } catch {
+            print("Error")
+        }
     }
     
-    func updateUser() {
-        saveContext()
-        fetchUsers()
+    func updateName(item: Users, newName: String) {
+        item.name = newName
+        
+        do {
+            try context.save()
+            fetchUsers()
+        } catch {
+            print("Error")
+        }
+    }
+    
+    func updateGender(item: Users, newGender: String) {
+        item.gender = newGender
+        
+        do {
+            try context.save()
+            fetchUsers()
+        } catch {
+            print("Error")
+        }
+    }
+    
+    func updateDate(item: Users, newDate: Date) {
+        item.date = newDate
+        
+        do {
+            try context.save()
+            fetchUsers()
+        } catch {
+            print("Error")
+        }
     }
 }

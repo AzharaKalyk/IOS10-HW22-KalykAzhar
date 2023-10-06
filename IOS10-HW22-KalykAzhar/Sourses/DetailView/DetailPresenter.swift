@@ -1,10 +1,10 @@
 import Foundation
 
-final class DetailPresenter: DetailPresenterProtocol {
-    weak var view: DetailProtocolView?
+final class DetailPresenter: DetailViewInput {
+    weak var view: DetailViewOutput?
     private var user: Users?
     
-    init(view: DetailProtocolView, user: Users) {
+    init(view: DetailViewOutput, user: Users) {
         self.view = view
         self.user = user
     }
@@ -17,6 +17,5 @@ final class DetailPresenter: DetailPresenterProtocol {
         user?.name = name
         user?.gender = gender
         user?.date = date
-        CoreData.shared.updateUser()
     }
 }
