@@ -1,32 +1,34 @@
 import Foundation
 
-final class Presenter: UsersPresenterProtocol {
+class Presenter: UsersViewInput {
     
-    weak var view: UsersView?
+    weak var view: UsersViewOutput?
+    let dataManager: CoreDataProtocol
     
-    init(view: UsersView) {
+    required init(view: UsersViewOutput, dataManager: CoreDataProtocol) {
         self.view = view
+        self.dataManager = dataManager
     }
     
     func addNewUser(name: String) {
-        CoreData.shared.addNewUser(name: name, gender: "", date: "")
+        dataManager.addNewUser(name: name)
         view?.reloadData()
     }
     
     func fetchUsers() {
-        CoreData.shared.fetchUsers()
+        dataManager.fetchUsers()
         view?.reloadData()
     }
     func getUsersCount() -> Int {
-        CoreData.shared.users?.count ?? 0
+        dataManager.models?.count ?? 0
     }
     
-    func getUser(index: Int) -> Users? {
-        CoreData.shared.users?[index]
+    func getUser(_ index: Int) -> Users? {
+        return dataManager.models?[index]
     }
     
-    func deleteUser(index: Int) {
-        CoreData.shared.deleteUser(index: index)
+    func deleteUser(_ index: Int) {
+        dataManager.deleteUser(index: index)
         view?.reloadData()
     }
 }

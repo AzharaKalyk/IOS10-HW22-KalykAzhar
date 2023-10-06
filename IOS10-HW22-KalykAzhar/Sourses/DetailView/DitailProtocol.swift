@@ -1,12 +1,12 @@
 import Foundation
 
-protocol DetailProtocolView: AnyObject {
+protocol DetailViewOutput: AnyObject {
     var user: Users? { get set }
     func updateUserInfo()
 }
 
-protocol DetailPresenterProtocol {
-    init(view: DetailProtocolView, user: Users)
+protocol DetailViewInput {
+    init(view: DetailViewOutput, user: Users)
     func getUser()
     func updateUser(name: String?, date: Date?, gender: String?)
 }

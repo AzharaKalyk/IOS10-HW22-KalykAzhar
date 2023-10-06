@@ -23,6 +23,7 @@
 		3BAB86922AB9A7950090D0B6 /* UsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BAB86912AB9A7950090D0B6 /* UsersViewController.swift */; };
 		3BAB86972AB9A7960090D0B6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3BAB86962AB9A7960090D0B6 /* Assets.xcassets */; };
 		3BAB86C82ABAB85B0090D0B6 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BAB86C72ABAB85B0090D0B6 /* DetailViewController.swift */; };
+		3BFFD1102ACF26CA009A2BA4 /* CoreDataProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BFFD10F2ACF26CA009A2BA4 /* CoreDataProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		3BAB86962AB9A7960090D0B6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3BAB869B2AB9A7960090D0B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3BAB86C72ABAB85B0090D0B6 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		3BFFD10F2ACF26CA009A2BA4 /* CoreDataProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,8 +129,8 @@
 			isa = PBXGroup;
 			children = (
 				3B152FC52AC52F4C001AED93 /* CoreData.swift */,
-				3B1B528D2AC098FC00C934D2 /* Users+CoreDataProperties.swift */,
-				3B1B528C2AC098FC00C934D2 /* Users+CoreDataClass.swift */,
+				3BFFD10F2ACF26CA009A2BA4 /* CoreDataProtocol.swift */,
+				3BFFD1112ACF26ED009A2BA4 /* CoreDataModel */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -151,6 +153,15 @@
 				3BAB86962AB9A7960090D0B6 /* Assets.xcassets */,
 			);
 			path = Resourses;
+			sourceTree = "<group>";
+		};
+		3BFFD1112ACF26ED009A2BA4 /* CoreDataModel */ = {
+			isa = PBXGroup;
+			children = (
+				3B1B528C2AC098FC00C934D2 /* Users+CoreDataClass.swift */,
+				3B1B528D2AC098FC00C934D2 /* Users+CoreDataProperties.swift */,
+			);
+			path = CoreDataModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -228,6 +239,7 @@
 				3BAB86922AB9A7950090D0B6 /* UsersViewController.swift in Sources */,
 				3B1B528E2AC098FC00C934D2 /* Users+CoreDataClass.swift in Sources */,
 				3B152FC22AC346B5001AED93 /* DitailProtocol.swift in Sources */,
+				3BFFD1102ACF26CA009A2BA4 /* CoreDataProtocol.swift in Sources */,
 				3B152FC02AC346A5001AED93 /* DetailPresenter.swift in Sources */,
 				3B152FCC2AC552CC001AED93 /* ExtensionUsersViewController.swift in Sources */,
 				3B152FBD2AC1F5AF001AED93 /* UsersViewPresenterProtocol.swift in Sources */,

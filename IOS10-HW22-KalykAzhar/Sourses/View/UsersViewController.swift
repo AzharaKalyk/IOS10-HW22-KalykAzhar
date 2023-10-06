@@ -1,9 +1,9 @@
 import UIKit
 import CoreData
 
-class UsersViewController: UIViewController, UsersView {
+class UsersViewController: UIViewController, UITableViewDelegate {
     
-    var presenter: UsersPresenterProtocol? 
+    var presenter: UsersViewInput? 
     
     // MARK: - Elements
     
@@ -14,7 +14,6 @@ class UsersViewController: UIViewController, UsersView {
         textField.backgroundColor = .systemGray4
         textField.placeholder = "Print your name here"
         textField.translatesAutoresizingMaskIntoConstraints = false
-        
         return textField
     }()
     
@@ -25,7 +24,6 @@ class UsersViewController: UIViewController, UsersView {
         button.setTitle("Press", for: .normal)
         button.addTarget(self, action: #selector(addToTextField), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
-        
         return button
     }()
     
@@ -48,9 +46,9 @@ class UsersViewController: UIViewController, UsersView {
         title = "Users"
         navigationController?.navigationBar.prefersLargeTitles = true
         view.backgroundColor = .white
-        presenter?.fetchUsers()
         setupHierarchy()
         setupLayout()
+        presenter?.fetchUsers()
     }
     
     // MARK: - Setup
@@ -92,9 +90,10 @@ class UsersViewController: UIViewController, UsersView {
             tableView.reloadData()
         }
     }
-    
+}
+
+extension UsersViewController: UsersViewOutput {
     func reloadData() {
         tableView.reloadData()
     }
 }
-

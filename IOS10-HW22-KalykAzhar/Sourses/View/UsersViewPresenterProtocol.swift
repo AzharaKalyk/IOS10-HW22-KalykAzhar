@@ -1,15 +1,15 @@
 import Foundation
 import CoreData
 
-protocol UsersView: AnyObject {
+protocol UsersViewOutput: AnyObject {
     func reloadData()
 }
 
-protocol UsersPresenterProtocol {
-    init (view: UsersView)
+protocol UsersViewInput {
+    init (view: UsersViewOutput, dataManager: CoreDataProtocol)
     func addNewUser(name: String)
     func fetchUsers()
     func getUsersCount() -> Int
-    func getUser(index: Int) -> Users?
-    func deleteUser(index: Int)
+    func getUser(_ index: Int) -> Users?
+    func deleteUser(_ index: Int)
 }
