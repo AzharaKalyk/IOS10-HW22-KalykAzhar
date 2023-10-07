@@ -4,7 +4,7 @@ import CoreData
 
 // MARK: - Extension UsersViewController
 
-extension UsersViewController: UITableViewDataSource {
+extension UserViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return presenter?.getUsersCount() ?? 0
     }
@@ -26,7 +26,7 @@ extension UsersViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let user = presenter?.getUser(indexPath.row)
-        let detail = ModuleBuilder.createDetailView(model: user ?? Users())
+        let detail = ModuleBuilder.createDetailView(model: user ?? User())
         self.navigationController?.pushViewController(detail, animated: true)
     }
 }

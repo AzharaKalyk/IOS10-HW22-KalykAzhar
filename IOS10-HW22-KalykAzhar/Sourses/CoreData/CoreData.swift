@@ -2,11 +2,11 @@ import Foundation
 import CoreData
 
 final class CoreData: CoreDataProtocol {
-    var models: [Users]?
+    var models: [User]?
     
     static let shared = CoreData()
     
-    var users: [Users]?
+    var users: [User]?
     
     // MARK: -CoreDataStack
     
@@ -43,7 +43,7 @@ final class CoreData: CoreDataProtocol {
     
     func fetchUsers() {
         do {
-            models = try context.fetch(Users.fetchRequest())
+            models = try context.fetch(User.fetchRequest())
             
         } catch {
             print("Error")
@@ -51,7 +51,7 @@ final class CoreData: CoreDataProtocol {
     }
     
     func addNewUser(name: String) {
-        let user = Users(context: context)
+        let user = User(context: context)
         user.name = name
         do {
             try context.save()
@@ -73,7 +73,7 @@ final class CoreData: CoreDataProtocol {
         }
     }
     
-    func updateName(item: Users, newName: String) {
+    func updateName(item: User, newName: String) {
         item.name = newName
         
         do {
@@ -84,7 +84,7 @@ final class CoreData: CoreDataProtocol {
         }
     }
     
-    func updateGender(item: Users, newGender: String) {
+    func updateGender(item: User, newGender: String) {
         item.gender = newGender
         
         do {
@@ -95,7 +95,7 @@ final class CoreData: CoreDataProtocol {
         }
     }
     
-    func updateDate(item: Users, newDate: Date) {
+    func updateDate(item: User, newDate: Date) {
         item.date = newDate
         
         do {

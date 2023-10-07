@@ -2,9 +2,9 @@ import Foundation
 
 final class DetailPresenter: DetailViewInput {
     weak var view: DetailViewOutput?
-    private var user: Users?
+    private var user: User?
     
-    init(view: DetailViewOutput, user: Users) {
+    init(view: DetailViewOutput, user: User) {
         self.view = view
         self.user = user
     }

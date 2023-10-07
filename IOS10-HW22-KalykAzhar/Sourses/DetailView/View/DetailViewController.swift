@@ -7,14 +7,15 @@ class DetailViewController: UIViewController, DetailViewOutput {
     // MARK: - Elements
     
     private var isEditUser = false
+    
     var presenter: DetailViewInput?
     
-    var user: Users? {
+    var user: User? {
         didSet {
             userName.text = user?.name
             genderTextField.text = user?.gender
             if let date = user?.date {
-                calendarTextField.text = formatDate(date)
+                datePicker.date = date
             }
         }
     }
@@ -66,17 +67,12 @@ class DetailViewController: UIViewController, DetailViewOutput {
         return calendarIcon
     }()
     
-    private lazy var calendarTextField: UITextField = {
-        let calendarTextField = UITextField()
-        calendarTextField.isEnabled = false
-        calendarTextField.layer.cornerRadius = 8
-        calendarTextField.borderStyle = .roundedRect
-        calendarTextField.layer.borderWidth = 1
-        calendarTextField.layer.borderColor = UIColor.black.cgColor
-        calendarTextField.placeholder = "DD.MM.YYYY"
-        calendarTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
-        calendarTextField.translatesAutoresizingMaskIntoConstraints = false
-        return calendarTextField
+    private lazy var datePicker: UIDatePicker = {
+        let datePicker = UIDatePicker()
+        datePicker.datePickerMode = .date
+        datePicker.addTarget(self, action: #selector(giveDate(_:)), for: .valueChanged)
+        datePicker.translatesAutoresizingMaskIntoConstraints = false
+        return datePicker
     }()
     
     private lazy var genderIcon: UIImageView = {
@@ -98,20 +94,6 @@ class DetailViewController: UIViewController, DetailViewOutput {
         return genderTextField
     }()
     
-    var person: Users? {
-        didSet {
-            userName.text = person?.name
-            if let date = person?.date {
-                let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "dd.MM.yyyy"
-                calendarTextField.text = dateFormatter.string(from: date)
-            } else {
-                calendarTextField.text = nil
-            }
-            genderTextField.text = person?.gender
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -128,7 +110,7 @@ class DetailViewController: UIViewController, DetailViewOutput {
         view.addSubview(userIcon)
         view.addSubview(userName)
         view.addSubview(calendarIcon)
-        view.addSubview(calendarTextField)
+        view.addSubview(datePicker)
         view.addSubview(genderIcon)
         view.addSubview(genderTextField)
     }
@@ -157,9 +139,9 @@ class DetailViewController: UIViewController, DetailViewOutput {
             calendarIcon.widthAnchor.constraint(equalToConstant: 20),
             calendarIcon.heightAnchor.constraint(equalToConstant: 20),
             
-            calendarTextField.leadingAnchor.constraint(equalTo: calendarIcon.trailingAnchor, constant: 8),
-            calendarTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-            calendarTextField.centerYAnchor.constraint(equalTo: calendarIcon.centerYAnchor),
+            datePicker.leadingAnchor.constraint(equalTo: calendarIcon.trailingAnchor, constant: 8),
+            datePicker.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -260),
+            datePicker.centerYAnchor.constraint(equalTo: calendarIcon.centerYAnchor),
             
             genderIcon.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
             genderIcon.topAnchor.constraint(equalTo: calendarIcon.bottomAnchor, constant: 25),
@@ -173,48 +155,31 @@ class DetailViewController: UIViewController, DetailViewOutput {
     }
     
     // MARK: - Actions
-    
-    @objc func textFieldDidChange(_ textField: UITextField) {
-        if let text = textField.text {
-            if text.count == 2 || text.count == 5 {
-                textField.text = text + "."
-            }
-        }
+    func updateUserInfo() {
     }
     
     @objc func editUser() {
         if isEditUser {
             userName.isEnabled = false
-            calendarTextField.isEnabled = false
+            datePicker.isEnabled = false
             genderTextField.isEnabled = false
             editButton.setTitle("Edit", for: .normal)
             user?.name = userName.text
             user?.gender = genderTextField.text
-            user?.date = parseDate(calendarTextField.text)
-            updateUserInfo()
+            user?.date = datePicker.date
         } else {
             userName.isEnabled = true
-            calendarTextField.isEnabled = true
+            datePicker.isEnabled = true
             genderTextField.isEnabled = true
             editButton.setTitle("Save", for: .normal)
         }
         isEditUser.toggle()
     }
     
-    func updateUserInfo() {
-        guard let name = userName.text, !name.isEmpty,
-              let gender = genderTextField.text,
-              let date = calendarTextField.text
-        else { return }
-        
+    @objc private func giveDate(_ sender: UIDatePicker) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd.MM.yyyy"
-        
-        if let date = dateFormatter.date(from: date) {
-            presenter?.updateUser(name: name, date: date, gender: gender)
-        } else {
-            print("Error")
-        }
+        let selectedDate = dateFormatter.string(from: sender.date)
     }
 }
 
