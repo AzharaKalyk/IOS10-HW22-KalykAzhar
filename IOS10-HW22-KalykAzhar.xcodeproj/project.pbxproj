@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3B152FBD2AC1F5AF001AED93 /* UsersViewPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B152FBC2AC1F5AF001AED93 /* UsersViewPresenterProtocol.swift */; };
-		3B152FC02AC346A5001AED93 /* DetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B152FBF2AC346A5001AED93 /* DetailPresenter.swift */; };
+		3B152FC02AC346A5001AED93 /* DetailViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B152FBF2AC346A5001AED93 /* DetailViewPresenter.swift */; };
 		3B152FC22AC346B5001AED93 /* DitailProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B152FC12AC346B5001AED93 /* DitailProtocol.swift */; };
 		3B152FC42AC34DA3001AED93 /* Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B152FC32AC34DA3001AED93 /* Builder.swift */; };
 		3B152FC62AC52F4C001AED93 /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B152FC52AC52F4C001AED93 /* CoreData.swift */; };
@@ -28,7 +28,7 @@
 
 /* Begin PBXFileReference section */
 		3B152FBC2AC1F5AF001AED93 /* UsersViewPresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewPresenterProtocol.swift; sourceTree = "<group>"; };
-		3B152FBF2AC346A5001AED93 /* DetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPresenter.swift; sourceTree = "<group>"; };
+		3B152FBF2AC346A5001AED93 /* DetailViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewPresenter.swift; sourceTree = "<group>"; };
 		3B152FC12AC346B5001AED93 /* DitailProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DitailProtocol.swift; sourceTree = "<group>"; };
 		3B152FC32AC34DA3001AED93 /* Builder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Builder.swift; sourceTree = "<group>"; };
 		3B152FC52AC52F4C001AED93 /* CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreData.swift; sourceTree = "<group>"; };
@@ -59,6 +59,64 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3B0FFBBB2AD1DEE200532142 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3BAB87142ABCBB640090D0B6 /* MainScreen */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3B0FFBBC2AD1DF0400532142 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3BAB86912AB9A7950090D0B6 /* UsersViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3B0FFBBD2AD1DF1200532142 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				3B152FCB2AC552CC001AED93 /* ExtensionUsersViewController.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		3B0FFBBE2AD1DF2900532142 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				3B152FC92AC548E3001AED93 /* UsersViewPresenter.swift */,
+				3B152FBC2AC1F5AF001AED93 /* UsersViewPresenterProtocol.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		3B0FFBBF2AD1DF4C00532142 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3BAB86C72ABAB85B0090D0B6 /* DetailViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3B0FFBC02AD1DF5600532142 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				3B152FC72AC5476A001AED93 /* ExtensionDetailViewController.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		3B0FFBC12AD1DF6E00532142 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				3B152FBF2AC346A5001AED93 /* DetailViewPresenter.swift */,
+				3B152FC12AC346B5001AED93 /* DitailProtocol.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
 		3B152FB42AC1EBCF001AED93 /* Bilder */ = {
 			isa = PBXGroup;
 			children = (
@@ -70,10 +128,9 @@
 		3B152FBE2AC1FB0D001AED93 /* DetailView */ = {
 			isa = PBXGroup;
 			children = (
-				3BAB86C72ABAB85B0090D0B6 /* DetailViewController.swift */,
-				3B152FC72AC5476A001AED93 /* ExtensionDetailViewController.swift */,
-				3B152FBF2AC346A5001AED93 /* DetailPresenter.swift */,
-				3B152FC12AC346B5001AED93 /* DitailProtocol.swift */,
+				3B0FFBBF2AD1DF4C00532142 /* View */,
+				3B0FFBC02AD1DF5600532142 /* Extension */,
+				3B0FFBC12AD1DF6E00532142 /* Presenter */,
 			);
 			path = DetailView;
 			sourceTree = "<group>";
@@ -114,15 +171,14 @@
 			path = App;
 			sourceTree = "<group>";
 		};
-		3BAB87142ABCBB640090D0B6 /* View */ = {
+		3BAB87142ABCBB640090D0B6 /* MainScreen */ = {
 			isa = PBXGroup;
 			children = (
-				3BAB86912AB9A7950090D0B6 /* UsersViewController.swift */,
-				3B152FCB2AC552CC001AED93 /* ExtensionUsersViewController.swift */,
-				3B152FC92AC548E3001AED93 /* UsersViewPresenter.swift */,
-				3B152FBC2AC1F5AF001AED93 /* UsersViewPresenterProtocol.swift */,
+				3B0FFBBC2AD1DF0400532142 /* View */,
+				3B0FFBBD2AD1DF1200532142 /* Extension */,
+				3B0FFBBE2AD1DF2900532142 /* Presenter */,
 			);
-			path = View;
+			path = MainScreen;
 			sourceTree = "<group>";
 		};
 		3BAB87162ABCBB850090D0B6 /* CoreData */ = {
@@ -130,7 +186,6 @@
 			children = (
 				3B152FC52AC52F4C001AED93 /* CoreData.swift */,
 				3BFFD10F2ACF26CA009A2BA4 /* CoreDataProtocol.swift */,
-				3BFFD1112ACF26ED009A2BA4 /* CoreDataModel */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -140,8 +195,9 @@
 			children = (
 				3BAB87132ABCBB590090D0B6 /* App */,
 				3B152FB42AC1EBCF001AED93 /* Bilder */,
+				3BFFD1112ACF26ED009A2BA4 /* Entity */,
 				3BAB87162ABCBB850090D0B6 /* CoreData */,
-				3BAB87142ABCBB640090D0B6 /* View */,
+				3B0FFBBB2AD1DEE200532142 /* View */,
 				3B152FBE2AC1FB0D001AED93 /* DetailView */,
 			);
 			path = Sourses;
@@ -155,13 +211,13 @@
 			path = Resourses;
 			sourceTree = "<group>";
 		};
-		3BFFD1112ACF26ED009A2BA4 /* CoreDataModel */ = {
+		3BFFD1112ACF26ED009A2BA4 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
 				3B1B528C2AC098FC00C934D2 /* Users+CoreDataClass.swift */,
 				3B1B528D2AC098FC00C934D2 /* Users+CoreDataProperties.swift */,
 			);
-			path = CoreDataModel;
+			path = Entity;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -240,7 +296,7 @@
 				3B1B528E2AC098FC00C934D2 /* Users+CoreDataClass.swift in Sources */,
 				3B152FC22AC346B5001AED93 /* DitailProtocol.swift in Sources */,
 				3BFFD1102ACF26CA009A2BA4 /* CoreDataProtocol.swift in Sources */,
-				3B152FC02AC346A5001AED93 /* DetailPresenter.swift in Sources */,
+				3B152FC02AC346A5001AED93 /* DetailViewPresenter.swift in Sources */,
 				3B152FCC2AC552CC001AED93 /* ExtensionUsersViewController.swift in Sources */,
 				3B152FBD2AC1F5AF001AED93 /* UsersViewPresenterProtocol.swift in Sources */,
 				3B152FCA2AC548E3001AED93 /* UsersViewPresenter.swift in Sources */,

@@ -1,11 +1,11 @@
 import Foundation
 
-class Presenter: UsersViewInput {
+class Presenter: UserViewInput {
     
-    weak var view: UsersViewOutput?
+    weak var view: UserViewOutput?
     let dataManager: CoreDataProtocol
     
-    required init(view: UsersViewOutput, dataManager: CoreDataProtocol) {
+    required init(view: UserViewOutput, dataManager: CoreDataProtocol) {
         self.view = view
         self.dataManager = dataManager
     }
@@ -23,7 +23,7 @@ class Presenter: UsersViewInput {
         dataManager.models?.count ?? 0
     }
     
-    func getUser(_ index: Int) -> Users? {
+    func getUser(_ index: Int) -> User? {
         return dataManager.models?[index]
     }
     

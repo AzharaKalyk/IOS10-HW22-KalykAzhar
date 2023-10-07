@@ -1,9 +1,9 @@
 import UIKit
 import CoreData
 
-class UsersViewController: UIViewController, UITableViewDelegate {
+class UserViewController: UIViewController, UITableViewDelegate {
     
-    var presenter: UsersViewInput? 
+    var presenter: UserViewInput?
     
     // MARK: - Elements
     
@@ -92,7 +92,7 @@ class UsersViewController: UIViewController, UITableViewDelegate {
     }
 }
 
-extension UsersViewController: UsersViewOutput {
+extension UserViewController: UserViewOutput {
     func reloadData() {
         tableView.reloadData()
     }
