@@ -17,8 +17,12 @@ class Presenter: UserViewInput {
     
     func fetchUsers() {
         dataManager.fetchUsers()
-        view?.reloadData()
+        if let users = dataManager.getUsers() {
+            view?.users = users
+            view?.reloadData()
+        }
     }
+    
     func getUsersCount() -> Int {
         dataManager.models?.count ?? 0
     }
@@ -30,5 +34,9 @@ class Presenter: UserViewInput {
     func deleteUser(_ index: Int) {
         dataManager.deleteUser(index: index)
         view?.reloadData()
+    }
+    
+    func getUsers() -> [User] {
+        return dataManager.getUsers() ?? []
     }
 }

@@ -15,7 +15,7 @@
 		3B152FC82AC5476A001AED93 /* ExtensionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B152FC72AC5476A001AED93 /* ExtensionDetailViewController.swift */; };
 		3B152FCA2AC548E3001AED93 /* UsersViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B152FC92AC548E3001AED93 /* UsersViewPresenter.swift */; };
 		3B152FCC2AC552CC001AED93 /* ExtensionUsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B152FCB2AC552CC001AED93 /* ExtensionUsersViewController.swift */; };
-		3B1B528B2AC098BD00C934D2 /* HW22.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3B1B52892AC098BD00C934D2 /* HW22.xcdatamodeld */; };
+		3B1B528B2AC098BD00C934D2 /* User.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3B1B52892AC098BD00C934D2 /* User.xcdatamodeld */; };
 		3B1B528E2AC098FC00C934D2 /* Users+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1B528C2AC098FC00C934D2 /* Users+CoreDataClass.swift */; };
 		3B1B528F2AC098FC00C934D2 /* Users+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1B528D2AC098FC00C934D2 /* Users+CoreDataProperties.swift */; };
 		3BAB868E2AB9A7950090D0B6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BAB868D2AB9A7950090D0B6 /* AppDelegate.swift */; };
@@ -157,7 +157,7 @@
 				3BAB87172ABCBBA50090D0B6 /* Sourses */,
 				3BAB87182ABCBBFD0090D0B6 /* Resourses */,
 				3BAB869B2AB9A7960090D0B6 /* Info.plist */,
-				3B1B52892AC098BD00C934D2 /* HW22.xcdatamodeld */,
+				3B1B52892AC098BD00C934D2 /* User.xcdatamodeld */,
 			);
 			path = "IOS10-HW22-KalykAzhar";
 			sourceTree = "<group>";
@@ -301,7 +301,7 @@
 				3B152FBD2AC1F5AF001AED93 /* UsersViewPresenterProtocol.swift in Sources */,
 				3B152FCA2AC548E3001AED93 /* UsersViewPresenter.swift in Sources */,
 				3B152FC42AC34DA3001AED93 /* Builder.swift in Sources */,
-				3B1B528B2AC098BD00C934D2 /* HW22.xcdatamodeld in Sources */,
+				3B1B528B2AC098BD00C934D2 /* User.xcdatamodeld in Sources */,
 				3BAB868E2AB9A7950090D0B6 /* AppDelegate.swift in Sources */,
 				3BAB86C82ABAB85B0090D0B6 /* DetailViewController.swift in Sources */,
 				3BAB86902AB9A7950090D0B6 /* SceneDelegate.swift in Sources */,
@@ -503,13 +503,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		3B1B52892AC098BD00C934D2 /* HW22.xcdatamodeld */ = {
+		3B1B52892AC098BD00C934D2 /* User.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
 				3B1B528A2AC098BD00C934D2 /* Model.xcdatamodel */,
 			);
 			currentVersion = 3B1B528A2AC098BD00C934D2 /* Model.xcdatamodel */;
-			path = HW22.xcdatamodeld;
+			path = User.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

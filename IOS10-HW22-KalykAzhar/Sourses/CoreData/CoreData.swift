@@ -11,7 +11,7 @@ final class CoreData: CoreDataProtocol {
     // MARK: -CoreDataStack
     
     private lazy var persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "HW22")
+        let container = NSPersistentContainer(name: "User")
         container.loadPersistentStores { storeDescription, error in
             if let error = error as NSError? {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
@@ -26,7 +26,7 @@ final class CoreData: CoreDataProtocol {
     
     // MARK: -CoreData SavingSupport
     
-    private func saveContext () {
+    func saveContext () {
         let context = persistentContainer.viewContext
         
         if context.hasChanges {
@@ -104,5 +104,9 @@ final class CoreData: CoreDataProtocol {
         } catch {
             print("Error")
         }
+    }
+    
+    func getUsers() -> [User]? {
+        return models
     }
 }

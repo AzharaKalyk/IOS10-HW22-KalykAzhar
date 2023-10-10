@@ -17,5 +17,6 @@ final class DetailPresenter: DetailViewInput {
         user?.name = name
         user?.gender = gender
         user?.date = date
+        CoreData.shared.saveContext()
     }
 }

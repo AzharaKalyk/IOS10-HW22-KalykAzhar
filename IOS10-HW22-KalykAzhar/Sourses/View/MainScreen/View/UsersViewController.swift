@@ -4,6 +4,7 @@ import CoreData
 class UserViewController: UIViewController, UITableViewDelegate {
     
     var presenter: UserViewInput?
+    var users: [User] = []
     
     // MARK: - Elements
     
