@@ -2,6 +2,7 @@ import Foundation
 import CoreData
 
 protocol UserViewOutput: AnyObject {
+    var users: [User] { get set }
     func reloadData()
 }
 
@@ -12,4 +13,5 @@ protocol UserViewInput {
     func getUsersCount() -> Int
     func getUser(_ index: Int) -> User?
     func deleteUser(_ index: Int)
+    func getUsers() -> [User] 
 }

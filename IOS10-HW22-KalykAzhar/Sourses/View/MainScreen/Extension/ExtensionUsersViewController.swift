@@ -6,27 +6,27 @@ import CoreData
 
 extension UserViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return presenter?.getUsersCount() ?? 0
+        return users.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        let model = presenter?.getUser(indexPath.row)
-        cell.textLabel?.text = model?.name
+        let user = users[indexPath.row]
+        cell.textLabel?.text = user.name
         cell.accessoryType = .disclosureIndicator
         return cell
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         guard editingStyle == .delete else { return }
-        presenter?.deleteUser(indexPath.row)
+        users.remove(at: indexPath.row)
         tableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let user = presenter?.getUser(indexPath.row)
-        let detail = ModuleBuilder.createDetailView(model: user ?? User())
+        let user = users[indexPath.row]
+        let detail = ModuleBuilder.createDetailView(model: user)
         self.navigationController?.pushViewController(detail, animated: true)
     }
 }

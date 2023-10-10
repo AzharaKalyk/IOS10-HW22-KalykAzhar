@@ -12,6 +12,6 @@ extension User {
     @NSManaged public var gender: String?
 }
 
-extension User : Identifiable {
+extension User: Identifiable {
     
 }

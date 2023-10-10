@@ -69,8 +69,8 @@ class DetailViewController: UIViewController, DetailViewOutput {
     
     private lazy var datePicker: UIDatePicker = {
         let datePicker = UIDatePicker()
+        datePicker.isEnabled = false
         datePicker.datePickerMode = .date
-        datePicker.addTarget(self, action: #selector(giveDate(_:)), for: .valueChanged)
         datePicker.translatesAutoresizingMaskIntoConstraints = false
         return datePicker
     }()
@@ -155,7 +155,13 @@ class DetailViewController: UIViewController, DetailViewOutput {
     }
     
     // MARK: - Actions
+    
     func updateUserInfo() {
+        guard let name = userName.text, !name.isEmpty,
+              let gender = genderTextField.text
+        else { return }
+              let date = datePicker.date
+        presenter?.updateUser(name: name, date: date, gender: gender)
     }
     
     @objc func editUser() {
@@ -174,12 +180,6 @@ class DetailViewController: UIViewController, DetailViewOutput {
             editButton.setTitle("Save", for: .normal)
         }
         isEditUser.toggle()
-    }
-    
-    @objc private func giveDate(_ sender: UIDatePicker) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd.MM.yyyy"
-        let selectedDate = dateFormatter.string(from: sender.date)
     }
 }
 

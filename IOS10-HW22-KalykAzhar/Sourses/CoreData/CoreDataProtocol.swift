@@ -9,4 +9,5 @@ protocol CoreDataProtocol {
     func updateName(item: User, newName: String)
     func updateGender(item: User, newGender: String)
     func updateDate(item: User, newDate: Date)
+    func getUsers() -> [User]?
 }
