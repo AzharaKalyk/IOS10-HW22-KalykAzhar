@@ -2,10 +2,8 @@ import Foundation
 import CoreData
 
 final class CoreData: CoreDataProtocol {
-    var models: [User]?
     
     static let shared = CoreData()
-    
     var users: [User]?
     
     // MARK: -CoreDataStack
@@ -43,7 +41,7 @@ final class CoreData: CoreDataProtocol {
     
     func fetchUsers() {
         do {
-            models = try context.fetch(User.fetchRequest())
+            users = try context.fetch(User.fetchRequest())
             
         } catch {
             print("Error")
@@ -51,20 +49,21 @@ final class CoreData: CoreDataProtocol {
     }
     
     func addNewUser(name: String) {
-        let user = User(context: context)
-        user.name = name
+        let newUser = User(context: context)
+        newUser.name = name
+        
         do {
             try context.save()
             fetchUsers()
         } catch {
-            print("Error")
+            print("error save")
         }
     }
     
     func deleteUser(index: Int) {
-        guard let user = models?[index] else { return }
-        
+        guard let user = users?[index] else { return }
         context.delete(user)
+        
         do {
             try context.save()
             fetchUsers()
@@ -80,7 +79,7 @@ final class CoreData: CoreDataProtocol {
             try context.save()
             fetchUsers()
         } catch {
-            print("Error")
+            print("error save")
         }
     }
     
@@ -91,7 +90,7 @@ final class CoreData: CoreDataProtocol {
             try context.save()
             fetchUsers()
         } catch {
-            print("Error")
+            print("error save")
         }
     }
     
@@ -102,11 +101,7 @@ final class CoreData: CoreDataProtocol {
             try context.save()
             fetchUsers()
         } catch {
-            print("Error")
+            print("error save")
         }
-    }
-    
-    func getUsers() -> [User]? {
-        return models
     }
 }

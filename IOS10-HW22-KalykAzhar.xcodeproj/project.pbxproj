@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3B152FBD2AC1F5AF001AED93 /* UsersViewPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B152FBC2AC1F5AF001AED93 /* UsersViewPresenterProtocol.swift */; };
-		3B152FC02AC346A5001AED93 /* DetailViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B152FBF2AC346A5001AED93 /* DetailViewPresenter.swift */; };
-		3B152FC22AC346B5001AED93 /* DitailProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B152FC12AC346B5001AED93 /* DitailProtocol.swift */; };
+		3B064F6F2AD83F6400AC7231 /* DetailViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B064F6E2AD83F6400AC7231 /* DetailViewPresenter.swift */; };
+		3B064F712AD83F8400AC7231 /* UsersViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B064F702AD83F8400AC7231 /* UsersViewPresenter.swift */; };
+		3B152FBD2AC1F5AF001AED93 /* UsersViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B152FBC2AC1F5AF001AED93 /* UsersViewProtocol.swift */; };
+		3B152FC22AC346B5001AED93 /* DitailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B152FC12AC346B5001AED93 /* DitailPresenter.swift */; };
 		3B152FC42AC34DA3001AED93 /* Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B152FC32AC34DA3001AED93 /* Builder.swift */; };
 		3B152FC62AC52F4C001AED93 /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B152FC52AC52F4C001AED93 /* CoreData.swift */; };
 		3B152FC82AC5476A001AED93 /* ExtensionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B152FC72AC5476A001AED93 /* ExtensionDetailViewController.swift */; };
-		3B152FCA2AC548E3001AED93 /* UsersViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B152FC92AC548E3001AED93 /* UsersViewPresenter.swift */; };
 		3B152FCC2AC552CC001AED93 /* ExtensionUsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B152FCB2AC552CC001AED93 /* ExtensionUsersViewController.swift */; };
 		3B1B528B2AC098BD00C934D2 /* User.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3B1B52892AC098BD00C934D2 /* User.xcdatamodeld */; };
 		3B1B528E2AC098FC00C934D2 /* Users+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B1B528C2AC098FC00C934D2 /* Users+CoreDataClass.swift */; };
@@ -27,13 +27,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3B152FBC2AC1F5AF001AED93 /* UsersViewPresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewPresenterProtocol.swift; sourceTree = "<group>"; };
-		3B152FBF2AC346A5001AED93 /* DetailViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewPresenter.swift; sourceTree = "<group>"; };
-		3B152FC12AC346B5001AED93 /* DitailProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DitailProtocol.swift; sourceTree = "<group>"; };
+		3B064F6E2AD83F6400AC7231 /* DetailViewPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewPresenter.swift; sourceTree = "<group>"; };
+		3B064F702AD83F8400AC7231 /* UsersViewPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UsersViewPresenter.swift; path = ../../../../../../../../../.Trash/UsersViewPresenter.swift; sourceTree = "<group>"; };
+		3B152FBC2AC1F5AF001AED93 /* UsersViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewProtocol.swift; sourceTree = "<group>"; };
+		3B152FC12AC346B5001AED93 /* DitailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DitailPresenter.swift; sourceTree = "<group>"; };
 		3B152FC32AC34DA3001AED93 /* Builder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Builder.swift; sourceTree = "<group>"; };
 		3B152FC52AC52F4C001AED93 /* CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreData.swift; sourceTree = "<group>"; };
 		3B152FC72AC5476A001AED93 /* ExtensionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDetailViewController.swift; sourceTree = "<group>"; };
-		3B152FC92AC548E3001AED93 /* UsersViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewPresenter.swift; sourceTree = "<group>"; };
 		3B152FCB2AC552CC001AED93 /* ExtensionUsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUsersViewController.swift; sourceTree = "<group>"; };
 		3B1B528A2AC098BD00C934D2 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		3B1B528C2AC098FC00C934D2 /* Users+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Users+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -86,8 +86,8 @@
 		3B0FFBBE2AD1DF2900532142 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
-				3B152FC92AC548E3001AED93 /* UsersViewPresenter.swift */,
-				3B152FBC2AC1F5AF001AED93 /* UsersViewPresenterProtocol.swift */,
+				3B064F702AD83F8400AC7231 /* UsersViewPresenter.swift */,
+				3B152FBC2AC1F5AF001AED93 /* UsersViewProtocol.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -111,8 +111,8 @@
 		3B0FFBC12AD1DF6E00532142 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
-				3B152FBF2AC346A5001AED93 /* DetailViewPresenter.swift */,
-				3B152FC12AC346B5001AED93 /* DitailProtocol.swift */,
+				3B064F6E2AD83F6400AC7231 /* DetailViewPresenter.swift */,
+				3B152FC12AC346B5001AED93 /* DitailPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -293,13 +293,13 @@
 				3B152FC62AC52F4C001AED93 /* CoreData.swift in Sources */,
 				3B1B528F2AC098FC00C934D2 /* Users+CoreDataProperties.swift in Sources */,
 				3BAB86922AB9A7950090D0B6 /* UsersViewController.swift in Sources */,
+				3B064F6F2AD83F6400AC7231 /* DetailViewPresenter.swift in Sources */,
 				3B1B528E2AC098FC00C934D2 /* Users+CoreDataClass.swift in Sources */,
-				3B152FC22AC346B5001AED93 /* DitailProtocol.swift in Sources */,
+				3B152FC22AC346B5001AED93 /* DitailPresenter.swift in Sources */,
 				3BFFD1102ACF26CA009A2BA4 /* CoreDataProtocol.swift in Sources */,
-				3B152FC02AC346A5001AED93 /* DetailViewPresenter.swift in Sources */,
+				3B064F712AD83F8400AC7231 /* UsersViewPresenter.swift in Sources */,
 				3B152FCC2AC552CC001AED93 /* ExtensionUsersViewController.swift in Sources */,
-				3B152FBD2AC1F5AF001AED93 /* UsersViewPresenterProtocol.swift in Sources */,
-				3B152FCA2AC548E3001AED93 /* UsersViewPresenter.swift in Sources */,
+				3B152FBD2AC1F5AF001AED93 /* UsersViewProtocol.swift in Sources */,
 				3B152FC42AC34DA3001AED93 /* Builder.swift in Sources */,
 				3B1B528B2AC098BD00C934D2 /* User.xcdatamodeld in Sources */,
 				3BAB868E2AB9A7950090D0B6 /* AppDelegate.swift in Sources */,

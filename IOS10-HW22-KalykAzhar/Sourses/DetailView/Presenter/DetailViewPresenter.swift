@@ -1,22 +1,34 @@
 import Foundation
 
-final class DetailPresenter: DetailViewInput {
+class DetailPresenter: DetailViewInput {
     weak var view: DetailViewOutput?
-    private var user: User?
+    var dataManager: CoreDataProtocol?
+    var user: User?
     
-    init(view: DetailViewOutput, user: User) {
+    required init(view: DetailViewOutput, dataManager: CoreDataProtocol, user: User) {
         self.view = view
+        self.dataManager = dataManager
         self.user = user
     }
     
-    func getUser() {
-        view?.user = user
+    func setContact() {
+        view?.user = user ?? User()
     }
     
-    func updateUser(name: String?, date: Date?, gender: String?) {
-        user?.name = name
-        user?.gender = gender
-        user?.date = date
-        CoreData.shared.saveContext()
+    func updateName(item: User, newName: String) {
+        print("update name: \(newName)")
+        user?.name = newName
+        dataManager?.updateName(item: item, newName: newName)
+        dataManager?.fetchUsers()
+    }
+    
+    func updateGender(item: User, newGender: String) {
+        user?.gender = newGender
+        dataManager?.fetchUsers()
+    }
+    
+    func updateDate(item: User, newDate: Date) {
+        user?.date = newDate
+        dataManager?.fetchUsers()
     }
 }

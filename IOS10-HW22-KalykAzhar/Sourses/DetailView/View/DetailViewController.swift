@@ -100,7 +100,6 @@ class DetailViewController: UIViewController, DetailViewOutput {
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: editButton)
         setupHirarchy()
         setupLayout()
-        presenter?.getUser()
     }
     
     // MARK: -Setup
@@ -156,14 +155,6 @@ class DetailViewController: UIViewController, DetailViewOutput {
     
     // MARK: - Actions
     
-    func updateUserInfo() {
-        guard let name = userName.text, !name.isEmpty,
-              let gender = genderTextField.text
-        else { return }
-              let date = datePicker.date
-        presenter?.updateUser(name: name, date: date, gender: gender)
-    }
-    
     @objc func editUser() {
         if isEditUser {
             userName.isEnabled = false
@@ -180,6 +171,22 @@ class DetailViewController: UIViewController, DetailViewOutput {
             editButton.setTitle("Save", for: .normal)
         }
         isEditUser.toggle()
+    }
+    
+    
+    func updateName() {
+        self.presenter?.updateName(item: self.user ?? User(),
+                                 newName: "\(userName.text ?? "Empty")")
+    }
+    
+    func updateGender() {
+        self.presenter?.updateGender(item: self.user ?? User(),
+                                   newGender: "\(genderTextField.text ?? "Empty")")
+    }
+    
+    func updateDate() {
+        self.presenter?.updateDate(item: self.user ?? User(),
+                                 newDate: datePicker.date)
     }
 }
 
