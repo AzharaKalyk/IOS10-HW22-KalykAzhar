@@ -5,7 +5,6 @@ class UserViewController: UIViewController, UITableViewDelegate {
     
     var presenter: UserViewInput?
     var users: [User] = []
-    
     // MARK: - Elements
     
     private lazy var textField: UITextField = {
@@ -39,6 +38,7 @@ class UserViewController: UIViewController, UITableViewDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        presenter?.fetchUsers()
         tableView.reloadData()
     }
     
@@ -49,7 +49,7 @@ class UserViewController: UIViewController, UITableViewDelegate {
         view.backgroundColor = .white
         setupHierarchy()
         setupLayout()
-        presenter?.fetchUsers()
+        
     }
     
     // MARK: - Setup
@@ -86,14 +86,20 @@ class UserViewController: UIViewController, UITableViewDelegate {
     
     @objc func addToTextField() {
         if let text = textField.text, !text.isEmpty {
-            self.presenter?.addNewUser(name: text)
+            presenter?.addNewUser(name: text)
             textField.text = ""
+            presenter?.fetchUsers()
             tableView.reloadData()
         }
     }
 }
 
 extension UserViewController: UserViewOutput {
+    func updateUsers(_ users: [User]) {
+        self.users = users
+        reloadData()
+    }
+    
     func reloadData() {
         tableView.reloadData()
     }
