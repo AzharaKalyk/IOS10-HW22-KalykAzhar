@@ -1,8 +1,8 @@
 import Foundation
 import CoreData
 
-final class CoreData: CoreDataProtocol {
-    
+class CoreData: CoreDataProtocol {
+
     static let shared = CoreData()
     var users: [User]?
     
@@ -54,54 +54,36 @@ final class CoreData: CoreDataProtocol {
         
         do {
             try context.save()
-            fetchUsers()
+          fetchUsers()
+         saveContext()
         } catch {
             print("error save")
         }
     }
-    
-    func deleteUser(index: Int) {
-        guard let user = users?[index] else { return }
+
+    func deleteUser(user: User) {
         context.delete(user)
         
         do {
             try context.save()
             fetchUsers()
+            CoreData.shared.saveContext()
         } catch {
-            print("Error")
+            print("Error! Пользователь не удален!")
         }
     }
     
-    func updateName(item: User, newName: String) {
-        item.name = newName
+    func updateUser(_ user: User, completion: ((Bool) -> ())) {
+        guard context.hasChanges else { return }
         
         do {
             try context.save()
+            completion(true)
             fetchUsers()
+            CoreData.shared.saveContext()
         } catch {
-            print("error save")
-        }
-    }
-    
-    func updateGender(item: User, newGender: String) {
-        item.gender = newGender
-        
-        do {
-            try context.save()
-            fetchUsers()
-        } catch {
-            print("error save")
-        }
-    }
-    
-    func updateDate(item: User, newDate: Date) {
-        item.date = newDate
-        
-        do {
-            try context.save()
-            fetchUsers()
-        } catch {
-            print("error save")
+            completion(false)
+            print("Error! Пользователя не удалось сохранить!")
         }
     }
 }

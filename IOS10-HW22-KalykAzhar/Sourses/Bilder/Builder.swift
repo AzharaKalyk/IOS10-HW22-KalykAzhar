@@ -8,7 +8,7 @@ protocol ModuleBuilderProtocol {
 
 class ModuleBuilder: ModuleBuilderProtocol {
     static func createMainView() -> UIViewController {
-        let dataManager = CoreData()
+        let dataManager = CoreData.shared
         let view = UserViewController()
         let presenter = Presenter(view: view, dataManager: dataManager)
         view.presenter = presenter
@@ -16,7 +16,7 @@ class ModuleBuilder: ModuleBuilderProtocol {
     }
     
     static func createDetailView(user: User) -> UIViewController {
-        let dataManager = CoreData()
+        let dataManager = CoreData.shared
         let view = DetailViewController()
         let presenter = DetailPresenter(view: view, dataManager: dataManager, user: user)
         view.presenter = presenter

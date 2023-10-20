@@ -1,9 +1,10 @@
 import Foundation
 
 class DetailPresenter: DetailViewInput {
+    
     weak var view: DetailViewOutput?
     var dataManager: CoreDataProtocol?
-    var user: User?
+    var user: User
     
     required init(view: DetailViewOutput, dataManager: CoreDataProtocol, user: User) {
         self.view = view
@@ -11,24 +12,18 @@ class DetailPresenter: DetailViewInput {
         self.user = user
     }
     
-    func setContact() {
-        view?.user = user ?? User()
+    func getUserData() {
+        view?.setUserData(with: user)
     }
     
-    func updateName(item: User, newName: String) {
-        print("update name: \(newName)")
-        user?.name = newName
-        dataManager?.updateName(item: item, newName: newName)
-        dataManager?.fetchUsers()
-    }
-    
-    func updateGender(item: User, newGender: String) {
-        user?.gender = newGender
-        dataManager?.fetchUsers()
-    }
-    
-    func updateDate(item: User, newDate: Date) {
-        user?.date = newDate
-        dataManager?.fetchUsers()
+    func updateUser(_ user: User, completion: ((Bool) -> ())) {
+        guard let dataManager = dataManager else {
+            completion(false)
+            return
+        }
+        
+        dataManager.updateUser(user) { isSuccess in
+            completion(isSuccess)
+        }
     }
 }

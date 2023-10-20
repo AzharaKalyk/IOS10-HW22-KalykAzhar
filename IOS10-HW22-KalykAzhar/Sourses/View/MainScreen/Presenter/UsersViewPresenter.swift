@@ -18,10 +18,11 @@ class Presenter: UserViewInput {
     func addNewUser(name: String) {
         dataManager.addNewUser(name: name)
         view?.reloadData()
+
     }
     
-    func deleteUser(_ index: Int) {
-        dataManager.deleteUser(index: index)
+    func deleteUser(user: User) {
+        dataManager.deleteUser(user: user)
         view?.reloadData()
     }
     

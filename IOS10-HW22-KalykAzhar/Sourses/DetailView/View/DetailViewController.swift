@@ -10,15 +10,10 @@ class DetailViewController: UIViewController, DetailViewOutput {
     
     var presenter: DetailViewInput?
     
-    var user: User? {
-        didSet {
-            userName.text = user?.name
-            genderTextField.text = user?.gender
-            if let date = user?.date {
-                datePicker.date = date
-            }
-        }
-    }
+    var user: User?
+    private var nameCopy = "" { didSet { userNameField.text = nameCopy }}
+    private var genderCopy = "" { didSet { genderTextField.text = genderCopy }}
+    private var dateCopy = Date() { didSet { datePicker.date = dateCopy }}
     
     private lazy var editButton: UIButton = {
         var editButton = UIButton()
@@ -48,7 +43,7 @@ class DetailViewController: UIViewController, DetailViewOutput {
         return userIcon
     }()
     
-    private lazy var userName: UITextField = {
+    private lazy var userNameField: UITextField = {
         let userName = UITextField()
         userName.isEnabled = false
         userName.layer.cornerRadius = 8
@@ -100,6 +95,7 @@ class DetailViewController: UIViewController, DetailViewOutput {
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: editButton)
         setupHirarchy()
         setupLayout()
+        presenter?.getUserData()
     }
     
     // MARK: -Setup
@@ -107,7 +103,7 @@ class DetailViewController: UIViewController, DetailViewOutput {
     func setupHirarchy() {
         view.addSubview(userImage)
         view.addSubview(userIcon)
-        view.addSubview(userName)
+        view.addSubview(userNameField)
         view.addSubview(calendarIcon)
         view.addSubview(datePicker)
         view.addSubview(genderIcon)
@@ -129,9 +125,9 @@ class DetailViewController: UIViewController, DetailViewOutput {
             userIcon.widthAnchor.constraint(equalToConstant: 20),
             userIcon.heightAnchor.constraint(equalToConstant: 20),
             
-            userName.leadingAnchor.constraint(equalTo: userIcon.trailingAnchor, constant: 8),
-            userName.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-            userName.centerYAnchor.constraint(equalTo: userIcon.centerYAnchor),
+            userNameField.leadingAnchor.constraint(equalTo: userIcon.trailingAnchor, constant: 8),
+            userNameField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            userNameField.centerYAnchor.constraint(equalTo: userIcon.centerYAnchor),
             
             calendarIcon.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
             calendarIcon.topAnchor.constraint(equalTo: userIcon.bottomAnchor, constant: 25),
@@ -156,37 +152,49 @@ class DetailViewController: UIViewController, DetailViewOutput {
     // MARK: - Actions
     
     @objc func editUser() {
-        if isEditUser {
-            userName.isEnabled = false
+        
+        isEditUser.toggle()
+        
+        if !isEditUser {
+            userNameField.isEnabled = false
             datePicker.isEnabled = false
             genderTextField.isEnabled = false
             editButton.setTitle("Edit", for: .normal)
-            user?.name = userName.text
-            user?.gender = genderTextField.text
-            user?.date = datePicker.date
+            
+            guard let user = user, let userName = userNameField.text, !userName.isEmpty else { return }
+            
+            user.name = userNameField.text
+            user.gender = genderTextField.text
+            user.date = datePicker.date
+            
+            presenter?.updateUser(user) { isSave in
+                if isSave {
+                    nameCopy = user.name ?? ""
+                    genderCopy = user.gender ?? ""
+                    dateCopy = user.date ?? Date()
+                    
+                } else {
+                    user.name = nameCopy
+                    user.gender = genderCopy
+                    user.date = dateCopy
+                    
+                    userNameField.text = nameCopy
+                    genderTextField.text = genderCopy
+                    datePicker.date = dateCopy
+                }
+            }
         } else {
-            userName.isEnabled = true
+            userNameField.isEnabled = true
             datePicker.isEnabled = true
             genderTextField.isEnabled = true
             editButton.setTitle("Save", for: .normal)
         }
-        isEditUser.toggle()
     }
     
-    
-    func updateName() {
-        self.presenter?.updateName(item: self.user ?? User(),
-                                 newName: "\(userName.text ?? "Empty")")
-    }
-    
-    func updateGender() {
-        self.presenter?.updateGender(item: self.user ?? User(),
-                                   newGender: "\(genderTextField.text ?? "Empty")")
-    }
-    
-    func updateDate() {
-        self.presenter?.updateDate(item: self.user ?? User(),
-                                 newDate: datePicker.date)
+    func setUserData(with user: User) {
+        nameCopy = user.name ?? ""
+        genderCopy = user.gender ?? ""
+        dateCopy = user.date ?? Date()
+        self.user = user
     }
 }
-

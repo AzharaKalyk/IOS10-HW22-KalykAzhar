@@ -1,12 +1,11 @@
 import Foundation
 
 protocol CoreDataProtocol {
-    var users: [User]? { get set}
+    var users: [User]? { get set }
     func fetchUsers()
     func addNewUser(name: String)
-    func deleteUser(index: Int)
-    func updateName(item: User, newName: String)
-    func updateGender(item: User, newGender: String)
-    func updateDate(item: User, newDate: Date)
+    func deleteUser(user: User)
+    func updateUser(_ user: User, completion: ((Bool) -> ()))
+    func saveContext()
 }
 

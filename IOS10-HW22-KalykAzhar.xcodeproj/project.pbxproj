@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		3B064F6F2AD83F6400AC7231 /* DetailViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B064F6E2AD83F6400AC7231 /* DetailViewPresenter.swift */; };
 		3B152FBD2AC1F5AF001AED93 /* UsersViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B152FBC2AC1F5AF001AED93 /* UsersViewProtocol.swift */; };
-		3B152FC22AC346B5001AED93 /* DitailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B152FC12AC346B5001AED93 /* DitailPresenter.swift */; };
+		3B152FC22AC346B5001AED93 /* DitailProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B152FC12AC346B5001AED93 /* DitailProtocol.swift */; };
 		3B152FC42AC34DA3001AED93 /* Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B152FC32AC34DA3001AED93 /* Builder.swift */; };
 		3B152FC62AC52F4C001AED93 /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B152FC52AC52F4C001AED93 /* CoreData.swift */; };
 		3B152FC82AC5476A001AED93 /* ExtensionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B152FC72AC5476A001AED93 /* ExtensionDetailViewController.swift */; };
@@ -29,7 +29,7 @@
 /* Begin PBXFileReference section */
 		3B064F6E2AD83F6400AC7231 /* DetailViewPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewPresenter.swift; sourceTree = "<group>"; };
 		3B152FBC2AC1F5AF001AED93 /* UsersViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewProtocol.swift; sourceTree = "<group>"; };
-		3B152FC12AC346B5001AED93 /* DitailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DitailPresenter.swift; sourceTree = "<group>"; };
+		3B152FC12AC346B5001AED93 /* DitailProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DitailProtocol.swift; sourceTree = "<group>"; };
 		3B152FC32AC34DA3001AED93 /* Builder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Builder.swift; sourceTree = "<group>"; };
 		3B152FC52AC52F4C001AED93 /* CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreData.swift; sourceTree = "<group>"; };
 		3B152FC72AC5476A001AED93 /* ExtensionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDetailViewController.swift; sourceTree = "<group>"; };
@@ -112,7 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				3B064F6E2AD83F6400AC7231 /* DetailViewPresenter.swift */,
-				3B152FC12AC346B5001AED93 /* DitailPresenter.swift */,
+				3B152FC12AC346B5001AED93 /* DitailProtocol.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -296,7 +296,7 @@
 				3B064F6F2AD83F6400AC7231 /* DetailViewPresenter.swift in Sources */,
 				3B9E76C92ADB0504005BB147 /* UsersViewPresenter.swift in Sources */,
 				3B1B528E2AC098FC00C934D2 /* Users+CoreDataClass.swift in Sources */,
-				3B152FC22AC346B5001AED93 /* DitailPresenter.swift in Sources */,
+				3B152FC22AC346B5001AED93 /* DitailProtocol.swift in Sources */,
 				3BFFD1102ACF26CA009A2BA4 /* CoreDataProtocol.swift in Sources */,
 				3B152FCC2AC552CC001AED93 /* ExtensionUsersViewController.swift in Sources */,
 				3B152FBD2AC1F5AF001AED93 /* UsersViewProtocol.swift in Sources */,
