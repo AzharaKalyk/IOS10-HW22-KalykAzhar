@@ -29,7 +29,8 @@ extension UserViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             tableView.beginUpdates()
-            presenter?.deleteUser(indexPath.row)
+            let user = users[indexPath.row]
+            presenter?.deleteUser(user: user)
             users.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
             tableView.endUpdates()
